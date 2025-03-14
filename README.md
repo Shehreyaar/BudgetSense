@@ -51,8 +51,7 @@ BudgetSense is targeted at **students, young professionals, and individuals** wh
 ---
 
 ## 👨‍💻 **Team Members**  
-| Name | Student ID |
-|-------|------------|
-| Javier Eduardo Quiroga Amaya | 2233277 |
-| Shehreyaar Fawad | 2233281 |
-| Eddie Eduardo Merlano Paez | 2233367 |
+- ### Javier Eduardo Quiroga Amaya
+- ### Shehreyaar Fawad
+- ### Eddie Eduardo Merlano Paez
+- ### Jerry Joy (Teacher)
