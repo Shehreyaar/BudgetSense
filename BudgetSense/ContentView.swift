@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  BudgetSense
+//  Finance
 //
 //  Created by english on 2025-03-11.
 //
@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var path = NavigationPath()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack(path: $path) {
+            LogIn(path: $path) // Default to LogIn view
         }
-        .padding()
     }
 }
 
