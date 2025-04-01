@@ -89,7 +89,7 @@ struct LogIn: View {
                 path.append("CreateAccount")
             }) {
                 Text("Create Account?")
-                    .foregroundColor(.gre en)
+                    .foregroundColor(.green)
             }
 
             Spacer()
@@ -103,3 +103,7 @@ struct LogIn: View {
         }
     }
 }
+
+//#Preview {
+//    LogIn()
+//}
