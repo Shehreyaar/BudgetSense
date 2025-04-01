@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false  // Use @AppStorage to persist the setting
+
     var body: some View {
         VStack {
             // Back Button
@@ -38,6 +40,10 @@ struct SettingsView: View {
                 .font(.body)
                 .padding()
 
+            // Dark Mode Toggle Button
+            Toggle("Enable Dark Mode", isOn: $isDarkMode)
+                .padding()
+
             Spacer()
         }
         .padding()
@@ -45,6 +51,7 @@ struct SettingsView: View {
         .background(Color(UIColor.systemGray6).edgesIgnoringSafeArea(.all))
     }
 }
+
 
 #Preview {
     SettingsView()

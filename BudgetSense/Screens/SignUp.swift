@@ -51,7 +51,7 @@ struct SignUp: View {
                    // Login Button
                    NavigationLink(destination: Text("Login Screen")) { // Replace with actual screen
                        Text("Login")
-                           .foregroundColor(.green)
+                           .foregroundColor(.button)
                    }
                }
                .padding(.bottom, 85)

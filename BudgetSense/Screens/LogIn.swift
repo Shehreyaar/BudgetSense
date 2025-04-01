@@ -89,7 +89,7 @@ struct LogIn: View {
                 path.append("CreateAccount")
             }) {
                 Text("Create Account?")
-                    .foregroundColor(.gre en)
+                    .foregroundColor(.green)
             }
 
             Spacer()
@@ -100,6 +100,20 @@ struct LogIn: View {
             if destination == "CreateAccount" {
                 CreateAccount(path: $path)
             }
+        }
+    }
+}
+
+struct LogIn_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            LogIn(path: .constant(NavigationPath()))
+                .previewDevice("iPhone 14")  // You can replace with the device you're testing on
+                .preferredColorScheme(.light)  // Light mode
+
+            LogIn(path: .constant(NavigationPath()))
+                .previewDevice("iPhone 14")
+                .preferredColorScheme(.dark)   // Dark mode
         }
     }
 }
