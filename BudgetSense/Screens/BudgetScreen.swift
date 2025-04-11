@@ -2,7 +2,7 @@
 //  BudgetScreen.swift
 //  BudgetSense
 //
-//  Created by Fawad on 2025-03-27.
+//  Created by Shehreyaar Fawad on 2025-03-27.
 //
 
 import SwiftUI

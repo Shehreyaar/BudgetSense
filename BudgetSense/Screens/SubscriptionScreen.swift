@@ -2,7 +2,7 @@
 //  SubscriptionScreen.swift
 //  BudgetSense
 //
-//  Created by Fawad on 2025-03-11.
+//  Created by Shehreyaar Fawad on 2025-03-11.
 //
 
 import SwiftUI

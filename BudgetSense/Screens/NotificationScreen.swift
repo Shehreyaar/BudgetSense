@@ -2,7 +2,7 @@
 //  NotificationScreen.swift
 //  BudgetSense
 //
-//  Created by english on 2025-03-11.
+//  Created by Shehreyaar Fawad on 2025-03-11.
 //
 
 import SwiftUI
