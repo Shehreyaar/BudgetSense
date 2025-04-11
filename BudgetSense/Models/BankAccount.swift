@@ -7,16 +7,10 @@
 
 import Foundation
 
-// Bank Account Model
-struct BankAccount {
+struct BankAccount: Identifiable, Codable {
+    var id: String
     var bankName: String
-    var accountType: String // Checking, Savings, etc.
-    var accountNumber: String
+    var accountType: String
     var balance: Double
+    var lastUpdated: Date
 }
-
-// Sample Bank Accounts
-let sampleBankAccounts: [BankAccount] = [
-    BankAccount(bankName: "TD Canada Trust", accountType: "Checking", accountNumber: "1234567890", balance: 1500.75),
-    BankAccount(bankName: "RBC Royal Bank", accountType: "Savings", accountNumber: "9876543210", balance: 8200.00)
-]

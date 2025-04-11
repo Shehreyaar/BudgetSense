@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct SubscriptionModel {
-    var subscriptionId: String
-    var subscriptionName: String
+struct Subscription: Identifiable, Codable {
+    var id: String
+    var name: String
     var amount: Double
-    var renewalDate: String // Timestamp
-    var status: String // Active, Expired, Canceled
+    var renewalDate: Date
+    var frequency: String
+    var isActive: Bool
 }

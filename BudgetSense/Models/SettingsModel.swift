@@ -7,16 +7,10 @@
 
 import Foundation
 
-// Settings Model
-struct Settings {
+struct Settings: Codable {
     var notificationsEnabled: Bool
     var darkModeEnabled: Bool
     var autoSync: Bool
+    var defaultCurrency: String
+    var monthlyReportDay: Int
 }
-
-// Sample Settings
-var userSettings = Settings(
-    notificationsEnabled: true,
-    darkModeEnabled: false,
-    autoSync: true
-)

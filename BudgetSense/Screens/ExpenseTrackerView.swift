@@ -50,13 +50,6 @@ struct ExpenseTrackerView: View {
     }
 }
 
-struct Expense: Identifiable {
-    var id = UUID()
-    var name: String
-    var category: String
-    var amount: Double
-    var date: Date
-}
 
 struct AddExpenseView: View {
     @Environment(\.dismiss) var dismiss
