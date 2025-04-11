@@ -84,20 +84,13 @@ struct HomepageView: View {
                         Divider()
                         NavigationLink(destination: SubscriptionScreen(subscriptions: [
                             // Active Subscriptions
-                            SubscriptionModel(subscriptionId: "1", subscriptionName: "Netflix", amount: 12.99, renewalDate: "03/12/2025", status: "Active"),
-                            SubscriptionModel(subscriptionId: "2", subscriptionName: "Amazon Prime", amount: 15.99, renewalDate: "04/10/2025", status: "Active"),
-                            SubscriptionModel(subscriptionId: "3", subscriptionName: "Disney+", amount: 8.99, renewalDate: "05/01/2025", status: "Active"),
-                            
-                            // Expired Subscriptions
-                            SubscriptionModel(subscriptionId: "4", subscriptionName: "Spotify", amount: 9.99, renewalDate: "03/01/2025", status: "Expired"),
-                            SubscriptionModel(subscriptionId: "5", subscriptionName: "Hulu", amount: 11.99, renewalDate: "02/15/2025", status: "Expired"),
-                            SubscriptionModel(subscriptionId: "6", subscriptionName: "Apple TV+", amount: 4.99, renewalDate: "02/01/2025", status: "Expired"),
-                            
-                            // Canceled Subscriptions
-                            SubscriptionModel(subscriptionId: "7", subscriptionName: "YouTube Premium", amount: 11.99, renewalDate: "Canceled - No renewal", status: "Canceled"),
-                            SubscriptionModel(subscriptionId: "8", subscriptionName: "HBO Max", amount: 14.99, renewalDate: "Canceled - No renewal", status: "Canceled"),
-                            SubscriptionModel(subscriptionId: "9", subscriptionName: "Peacock", amount: 9.99, renewalDate: "Canceled - No renewal", status: "Canceled")
-                        ])) {
+                            Subscription(id: "A1B2C3D4-E5F6-7890-1234-56789ABCDEF0", name: "Netflix", amount: 15.99, renewalDate: Date(), frequency: "Monthly", isActive: true),
+                                Subscription(id: "12345678-90AB-CDEF-1234-567890ABCDEF", name: "Spotify", amount: 9.99, renewalDate: Date(), frequency: "Monthly", isActive: true),
+                                Subscription(id: "FEDCBA98-7654-3210-FEED-C0FFEE123456", name: "Adobe Creative Cloud", amount: 52.99, renewalDate: Date(), frequency: "Monthly", isActive: false),
+                                Subscription(id: "C0FFEE12-3456-7890-ABCD-1234567890AB", name: "Amazon Prime", amount: 139.00, renewalDate: Date(), frequency: "Yearly", isActive: true),
+                                Subscription(id: "DEADBEEF-0000-1111-2222-333344445555", name: "Notion", amount: 4.00, renewalDate: Date(), frequency: "Monthly", isActive: true),
+                                Subscription(id: "BADF00D1-2345-6789-ABCD-9876543210FF", name: "YouTube Premium", amount: 11.99, renewalDate: Date(), frequency: "Monthly", isActive: false)
+                            ])) {
                             Text("Manage Subscriptions")
                                 .font(.caption)
                                 .foregroundColor(.blue)

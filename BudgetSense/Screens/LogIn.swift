@@ -6,18 +6,19 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct LogIn: View {
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var errorMessage: String = ""
     @Binding var path: NavigationPath
 
     var body: some View {
         VStack {
-            // Back Button (aligned to the left)
             HStack {
                 Button(action: {
-                    print("Back tapped")
+                    path.removeLast(path.count)
                 }) {
                     Image(systemName: "chevron.left")
                         .font(.title)
@@ -28,7 +29,6 @@ struct LogIn: View {
                 Spacer()
             }
 
-            // Title & Subtitle
             Text("Log in")
                 .font(.title)
                 .fontWeight(.bold)
@@ -42,7 +42,6 @@ struct LogIn: View {
 
             Spacer().frame(height: 20)
 
-            // Form Fields
             VStack(spacing: 30) {
                 TextField("Email address", text: $email)
                     .font(.system(size: 20))
@@ -67,10 +66,7 @@ struct LogIn: View {
 
             Spacer().frame(height: 70)
 
-            // Access Account Button
-            Button(action: {
-                print("Access Account Tapped")
-            }) {
+            Button(action: logIn) {
                 Text("Access Account")
                     .font(.system(size: 20))
                     .fontWeight(.bold)
@@ -82,9 +78,15 @@ struct LogIn: View {
             }
             .padding(.horizontal)
 
+            if !errorMessage.isEmpty {
+                Text(errorMessage)
+                    .foregroundColor(.red)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+            }
+
             Spacer().frame(height: 20)
 
-            // Create Account Navigation
             Button(action: {
                 path.append("CreateAccount")
             }) {
@@ -98,8 +100,28 @@ struct LogIn: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .navigationDestination(for: String.self) { destination in
             if destination == "CreateAccount" {
-                CreateAccount(path: $path)
+                SignUp(path: $path)
+            } else if destination == "Homepage" {
+                HomepageView()
             }
+        }
+    }
+
+    func logIn() {
+        guard !email.isEmpty, !password.isEmpty else {
+            errorMessage = "Please fill in all fields."
+            return
+        }
+
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                errorMessage = "Login failed: \(error.localizedDescription)"
+                return
+            }
+
+            errorMessage = ""
+            path.removeLast(path.count) // Clear history so user can't go back
+            path.append("Homepage")
         }
     }
 }
@@ -108,12 +130,12 @@ struct LogIn_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             LogIn(path: .constant(NavigationPath()))
-                .previewDevice("iPhone 14")  // You can replace with the device you're testing on
-                .preferredColorScheme(.light)  // Light mode
+                .previewDevice("iPhone 14")
+                .preferredColorScheme(.light)
 
             LogIn(path: .constant(NavigationPath()))
                 .previewDevice("iPhone 14")
-                .preferredColorScheme(.dark)   // Dark mode
+                .preferredColorScheme(.dark)
         }
     }
 }

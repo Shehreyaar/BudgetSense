@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ExpenseTrackerView: View {
     @State private var expenses: [Expense] = [
-        Expense(name: "Coffee", category: "Food & Drinks", amount: 4.50, date: Date()),
-        Expense(name: "Groceries", category: "Food", amount: 65.20, date: Date()),
-        Expense(name: "Spotify", category: "Subscription", amount: 9.99, date: Date())
+        Expense(id: "A1B2C3D4-E5F6-7890-1234-56789ABCDEF0", name: "Grocery Shopping", category: "Food", amount: 85.50, date: Date()),
+        Expense(id: "12345678-90AB-CDEF-1234-567890ABCDEF",  name: "Uber Ride",  category: "Transport", amount: 18.75, date: Date()),
+        Expense(id: "FEDCBA98-7654-3210-FEED-C0FFEE123456", name: "Netflix Subscription", category: "Entertainment", amount: 15.99, date: Date())
     ]
     @State private var showAddExpense = false
 
@@ -79,7 +79,7 @@ struct AddExpenseView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
                         if let amountVal = Double(amount) {
-                            let newExpense = Expense(name: name, category: category, amount: amountVal, date: Date())
+                            let newExpense = Expense(id: "FEDCBA98-7654-3210-FEED-C0FFEE123456", name: name, category: category, amount: amountVal, date: Date())
                             expenses.append(newExpense)
                             dismiss()
                         }
