@@ -2,7 +2,7 @@
 //  HelpCentreScreen.swift
 //  BudgetSense
 //
-//  Created by english on 2025-03-21.
+//  Created by Shehreyaar Fawad on 2025-03-21.
 //
 
 import SwiftUI
@@ -14,112 +14,81 @@ struct HelpCentreScreen: View {
     ]
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                HStack {
-                    Button(action: {
-                        // Action for going back to the (page with Help Centre Navigation) page
-                    }) {
-                        Image(systemName: "chevron.left")
+        NavigationView {
+            ScrollView {
+                VStack(spacing: 20) {
+                    HStack {
+                        Button(action: {
+                            // Add back navigation logic if needed
+                        }) {
+                            Image(systemName: "chevron.left")
+                                .foregroundColor(.green)
+                        }
+
+                        Spacer()
+
+                        Text("Help Centre")
+                            .font(.title)
+                            .fontWeight(.bold)
                             .foregroundColor(.green)
+                            .frame(maxWidth: .infinity)
                     }
+                    .padding(.horizontal)
+
+                    Text("How can we assist you today?")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .padding(.top, -10)
+
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        NavigationLink(destination: FAQScreen()) {
+                            HelpCentreTile(icon: "questionmark.circle.fill", label: "FAQ")
+                        }
+
+                        NavigationLink(destination: LiveChatScreen()) {
+                            HelpCentreTile(icon: "message.fill", label: "Live Chat")
+                        }
+
+                        NavigationLink(destination: EmailUsScreen()) {
+                            HelpCentreTile(icon: "envelope.fill", label: "Email Us")
+                        }
+
+                        NavigationLink(destination: VisitUsScreen()) {
+                            HelpCentreTile(icon: "map.fill", label: "Visit Us")
+                        }
+                    }
+                    .padding()
                     
-                    Spacer()
-                    
-                    Text("Help Centre")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(.green)
-                        .padding()
+                    Spacer(minLength: 30)
                 }
-                                
-                LazyVGrid(columns: columns, spacing: 20) {
-                    Button(action: {
-                        print("Frequently Asked Questions tapped")
-                    }) {
-                        VStack {
-                            Image(systemName: "questionmark.circle.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 80)
-                                .foregroundColor(.white)
-                            
-                            Text("FAQ")
-                                .font(.system(size: 20))
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                        }
-                        .frame(width: 150, height: 150)
-                        .background(Color.green)
-                        .cornerRadius(25)
-                    }
-                    
-                    Button(action: {
-                        print("Live Chat tapped")
-                    }) {
-                        VStack {
-                            Image(systemName: "message.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 80)
-                                .foregroundColor(.white)
-                            
-                            Text("Live Chat")
-                                .font(.system(size: 20))
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                        }
-                        .frame(width: 150, height: 150)
-                        .background(Color.green)
-                        .cornerRadius(25)
-                    }
-                    
-                    Button(action: {
-                        print("Email Contact tapped")
-                    }) {
-                        VStack {
-                            Image(systemName: "envelope.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 80)
-                                .foregroundColor(.white)
-                            
-                            Text("Email Us")
-                                .font(.system(size: 20))
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                        }
-                        .frame(width: 150, height: 150)
-                        .background(Color.green)
-                        .cornerRadius(25)
-                    }
-                    
-                    Button(action: {
-                        print("Visit Locations tapped")
-                    }) {
-                        VStack {
-                            Image(systemName: "map.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 80)
-                                .foregroundColor(.white)
-                            
-                            Text("Visit Us")
-                                .font(.system(size: 20))
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                        }
-                        .frame(width: 150, height: 150)
-                        .background(Color.green)
-                        .cornerRadius(25)
-                    }
-                }
-                .padding()
+                .padding(.top)
             }
-            .padding()
-            Spacer()
+            .navigationBarHidden(true)
         }
+    }
+}
+
+struct HelpCentreTile: View {
+    let icon: String
+    let label: String
+
+    var body: some View {
+        VStack {
+            Image(systemName: icon)
+                .resizable()
+                .scaledToFit()
+                .frame(height: 80)
+                .foregroundColor(.white)
+
+            Text(label)
+                .font(.system(size: 20))
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+        }
+        .frame(width: 150, height: 150)
+        .background(Color.green)
+        .cornerRadius(25)
+        .shadow(radius: 4)
     }
 }
 

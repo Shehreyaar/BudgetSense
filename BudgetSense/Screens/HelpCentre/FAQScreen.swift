@@ -2,7 +2,7 @@
 //  FAQScreen.swift
 //  BudgetSense
 //
-//  Created by english on 2025-04-01.
+//  Created by Shehreyaar Fawad on 2025-04-01.
 //
 
 import SwiftUI
@@ -22,9 +22,16 @@ struct FAQScreen: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 15) {
-                ForEach(0..<faqs.count, id: \.self) { index in
-                    VStack(alignment: .leading) {
+            VStack(spacing: 20) {
+                Text("Frequently Asked Questions")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.green)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
+
+                ForEach(faqs.indices, id: \.self) { index in
+                    VStack(alignment: .leading, spacing: 10) {
                         Button(action: {
                             withAnimation {
                                 expandedIndex = (expandedIndex == index) ? nil : index
@@ -32,8 +39,7 @@ struct FAQScreen: View {
                         }) {
                             HStack {
                                 Text(faqs[index].0)
-                                    .font(.title3)
-                                    .fontWeight(.bold)
+                                    .font(.headline)
                                     .foregroundColor(.green)
                                 
                                 Spacer()
@@ -42,27 +48,30 @@ struct FAQScreen: View {
                                     .foregroundColor(.green)
                             }
                         }
-                        .padding(.vertical, 8)
                         
                         if expandedIndex == index {
                             Text(faqs[index].1)
                                 .font(.body)
-                                .foregroundColor(.black)
-                                .padding(.bottom, 15)
+                                .foregroundColor(.primary)
+                                .transition(.opacity.combined(with: .move(edge: .top)))
                         }
                     }
+                    .padding()
+                    .background(Color(.white))
+                    .cornerRadius(12)
+                    .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
                     .padding(.horizontal)
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(radius: 5)
                 }
             }
-            .padding()
+            .padding(.top)
         }
+        .navigationTitle("FAQ")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
     FAQScreen()
 }
+
 
